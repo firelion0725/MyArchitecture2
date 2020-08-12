@@ -1,3 +1,4 @@
+include ':manger'
 include ':fun1'
 include ':data'
 include ':app'

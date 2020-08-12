@@ -2,6 +2,7 @@ package com.leo.myarchitecture
 
 import android.app.Application
 import com.leo.data.DataManger
+import com.leo.manger.aspectj.annotation.Record
 
 
 /**
@@ -13,6 +14,7 @@ import com.leo.data.DataManger
 
 class MyApplication : Application() {
 
+    @Record
     override fun onCreate() {
         super.onCreate()
         DataManger.initData(this, BuildConfig.DEBUG)
