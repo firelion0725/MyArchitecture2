@@ -1,2 +1,4 @@
+include ':fun1'
+include ':data'
 include ':app'
 rootProject.name = "MyArchitecture"

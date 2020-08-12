@@ -8,3 +8,4 @@ local.properties
 .cxx
 /.idea
 /.idea/*
+/gradle/wrapper/gradle-wrapper.properties
