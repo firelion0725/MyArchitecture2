@@ -1,9 +1,14 @@
 package com.leo.manger.aspectj;
 
+import com.leo.manger.aspectj.annotation.RecordClick;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+
+import java.lang.reflect.Method;
 
 /**
  * @author Leo.ZhangTJ
@@ -40,6 +45,15 @@ public class TrackPointAspect {
     @Around("trackPointClick()")
     public void aroundTrackPointClick(final ProceedingJoinPoint joinPoint) {
         System.out.println(joinPoint.getTarget().toString() + " click Start");
+
+        String value = "";
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        RecordClick annotation = method.getAnnotation(RecordClick.class);
+        if (annotation != null) {
+            value = annotation.value();
+            System.out.println(value);
+        }
         try {
             joinPoint.proceed();
         } catch (Throwable throwable) {
