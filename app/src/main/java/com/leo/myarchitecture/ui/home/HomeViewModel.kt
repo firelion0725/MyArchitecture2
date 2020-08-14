@@ -1,13 +1,15 @@
 package com.leo.myarchitecture.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.util.Log
+import com.leo.manger.aspectj.annotation.RecordClick
+import com.leo.myarchitecture.ui.base.BaseViewModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : BaseViewModel(application) {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+
+    @RecordClick("CLICK_HOME_BUTTON")
+    fun test() {
+        Log.i("aaaaaaaaa", "aaaaaaaaaa")
     }
-    val text: LiveData<String> = _text
 }

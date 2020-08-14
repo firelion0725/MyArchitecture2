@@ -1,31 +1,25 @@
 package com.leo.myarchitecture.ui.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import com.leo.myarchitecture.R
+import com.leo.myarchitecture.databinding.FragmentHomeBindingImpl
+import com.leo.myarchitecture.ui.base.BaseArchitectureFragment
+import com.leo.myarchitecture.ui.base.BaseViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseArchitectureFragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-
-    override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+    override fun setViewModel(): BaseViewModel {
+        return HomeViewModel(this.requireActivity().application)
     }
+
+    override fun setBinding(): ViewDataBinding {
+        val dataBinding: FragmentHomeBindingImpl? =
+            DataBindingUtil.bind(layoutInflater.inflate(R.layout.fragment_home, container, false))
+        dataBinding?.viewModel = viewModel as HomeViewModel?
+        return dataBinding!!
+    }
+
+
 }

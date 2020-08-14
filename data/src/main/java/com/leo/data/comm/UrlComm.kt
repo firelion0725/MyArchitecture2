@@ -1,4 +1,4 @@
-package com.leo.architecture.test.data.comm
+package com.leo.data.comm
 
 /**
  * @author Leo.ZhangTJ

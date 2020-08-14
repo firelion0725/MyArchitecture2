@@ -1,6 +1,6 @@
 package com.leo.data.api
 
-import com.leo.architecture.test.data.comm.baseUrl
+import com.leo.data.comm.baseUrl
 import com.leo.data.model.BannerTitleModel
 import com.leo.data.RetrofitManger
 import io.reactivex.Single

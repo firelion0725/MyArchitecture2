@@ -14,7 +14,6 @@ import com.leo.manger.aspectj.annotation.RecordClick
 
 class MyApplication : Application() {
 
-    @RecordClick("EVENT_ON_CREATE")
     override fun onCreate() {
         super.onCreate()
         DataManger.initData(this, BuildConfig.DEBUG)

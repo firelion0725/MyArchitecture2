@@ -1,6 +1,6 @@
 package com.leo.data
 
-import com.leo.architecture.test.data.comm.baseUrl
+import com.leo.data.comm.baseUrl
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
