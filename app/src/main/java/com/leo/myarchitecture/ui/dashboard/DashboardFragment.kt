@@ -8,8 +8,11 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.leo.myarchitecture.R
 import com.leo.myarchitecture.ui.base.BaseFragment
+import com.zhangyue.we.x2c.X2C
+import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
+@Xml(layouts = ["fragment_dashboard"])
 class DashboardFragment : BaseFragment() {
 
     private val dashboardViewModel: DashboardViewModel by viewModels()
@@ -19,7 +22,8 @@ class DashboardFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+//        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+        return X2C.inflate(inflater.context,R.layout.fragment_dashboard,container,false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
