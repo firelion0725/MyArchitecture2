@@ -1,13 +1,19 @@
 package com.leo.myarchitecture.ui.home
 
+import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.leo.myarchitecture.R
+import com.leo.myarchitecture.cpp.CppHttp
 import com.leo.myarchitecture.databinding.FragmentHomeBindingImpl
 import com.leo.myarchitecture.ui.base.BaseArchitectureFragment
 import com.leo.myarchitecture.ui.base.BaseViewModel
+import com.zhangyue.we.x2c.X2C
+import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
+@Xml(layouts = ["fragment_home"])
 class HomeFragment : BaseArchitectureFragment() {
 
     override fun setViewModel(): BaseViewModel {
@@ -15,10 +21,16 @@ class HomeFragment : BaseArchitectureFragment() {
     }
 
     override fun setBinding(): ViewDataBinding {
-        val dataBinding: FragmentHomeBindingImpl? =
-            DataBindingUtil.bind(layoutInflater.inflate(R.layout.fragment_home, container, false))
+        val view = X2C.inflate(context, R.layout.fragment_home, container, false)
+        val dataBinding: FragmentHomeBindingImpl? = DataBindingUtil.bind(view)
         dataBinding?.viewModel = viewModel as HomeViewModel?
         return dataBinding!!
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        val c = CppHttp()
+        text.text = c.testString()
     }
 
 
