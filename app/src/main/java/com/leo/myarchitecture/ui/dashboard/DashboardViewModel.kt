@@ -15,6 +15,7 @@ class DashboardViewModel() : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is dashboard Fragment"
     }
+
     val text: LiveData<String> = _text
 
     fun test() {
@@ -25,10 +26,8 @@ class DashboardViewModel() : ViewModel() {
                     _text.value = "${data.status}"
                 }
             } catch (e: Exception) {
-
                 println(e.message)
             }
         }
-
     }
 }
