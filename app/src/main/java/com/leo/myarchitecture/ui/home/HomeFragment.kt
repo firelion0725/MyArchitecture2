@@ -1,8 +1,11 @@
 package com.leo.myarchitecture.ui.home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import androidx.lifecycle.Observer
+import com.leo.fun1.ui.Fun1ActivityMainActivity
 import com.leo.myarchitecture.R
 import com.leo.myarchitecture.cpp.CppHttp
 import com.leo.myarchitecture.databinding.FragmentHomeBindingImpl
@@ -31,6 +34,11 @@ class HomeFragment : BaseArchitectureFragment() {
         super.onActivityCreated(savedInstanceState)
         val c = CppHttp()
         text.text = c.testString()
+
+        (viewModel as HomeViewModel).liveData.observe(this.viewLifecycleOwner, Observer {
+            val intent = Intent(this.activity, Fun1ActivityMainActivity::class.java)
+            startActivity(intent)
+        })
     }
 
 

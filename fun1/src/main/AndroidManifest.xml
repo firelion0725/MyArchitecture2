@@ -3,7 +3,7 @@
     package="com.leo.fun1">
 
     <application>
-        <activity android:name=".ui.Fun1ActivityMainActivity"></activity>
+        <activity android:name=".ui.Fun1ActivityMainActivity"/>
     </application>
 
 </manifest>
