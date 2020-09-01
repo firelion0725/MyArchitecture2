@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.leo.myarchitecture.R
-import com.leo.myarchitecture.ui.base.BaseFragment
+import com.leo.view.base.BaseFragment
 import com.zhangyue.we.x2c.X2C
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.fragment_dashboard.*

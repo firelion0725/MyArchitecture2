@@ -1,9 +1,8 @@
-package com.leo.myarchitecture.ui.base;
+package com.leo.view.base;
 
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.databinding.DataBindingComponent;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
@@ -36,50 +35,50 @@ public abstract class BaseArchitectureActivity<VBD extends ViewDataBinding, VM e
         super.onCreate(savedInstanceState);
 
         createViewModel();
-        createDataBinding(view);
+//        createDataBinding(view);
         getLifecycle().addObserver(viewModel);
         viewDataBinding.setLifecycleOwner(this);
         setContentView(view);
     }
 
-    private void createDataBinding(View view) {
-        try {
-            ParameterizedType superClassType = (ParameterizedType) this.getClass().getGenericSuperclass();
-            if (superClassType != null) {
-                Type type = superClassType.getActualTypeArguments()[0];
-                Class<VBD> clzz = null;
-                if (type instanceof ParameterizedType) {
-                    clzz = (Class<VBD>) ((ParameterizedType) type).getRawType();
-                } else {
-                    clzz = (Class<VBD>) type;
-                }
-
-                Class<?> implClzz = null;
-                String clzzName = clzz.getName();
-                if (!clzzName.endsWith("Impl")) {
-                    clzzName += "Impl";
-                }
-
-                implClzz = Class.forName(clzzName);
-
-                DataBindingComponent component = DataBindingUtil.getDefaultComponent();
-                Constructor<?>[] constructors = implClzz.getConstructors();
-                viewDataBinding = (VBD) constructors[0].newInstance(component, view);
-
-                Method[] methods = implClzz.getMethods();
-                for (Method m : methods) {
-                    if (m.getName().startsWith("set")) {
-                        Class<?> paramType = m.getParameterTypes()[0];
-                        if (paramType.getName().equals(viewModelClzz.getName())) {
-                            m.invoke(viewDataBinding, viewModel);
-                        }
-                    }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    private void createDataBinding(View view) {
+//        try {
+//            ParameterizedType superClassType = (ParameterizedType) this.getClass().getGenericSuperclass();
+//            if (superClassType != null) {
+//                Type type = superClassType.getActualTypeArguments()[0];
+//                Class<VBD> clzz = null;
+//                if (type instanceof ParameterizedType) {
+//                    clzz = (Class<VBD>) ((ParameterizedType) type).getRawType();
+//                } else {
+//                    clzz = (Class<VBD>) type;
+//                }
+//
+//                Class<?> implClzz = null;
+//                String clzzName = clzz.getName();
+//                if (!clzzName.endsWith("Impl")) {
+//                    clzzName += "Impl";
+//                }
+//
+//                implClzz = Class.forName(clzzName);
+//
+//                DataBindingComponent component = DataBindingUtil.getDefaultComponent();
+//                Constructor<?>[] constructors = implClzz.getConstructors();
+//                viewDataBinding = (VBD) constructors[0].newInstance(component, view);
+//
+//                Method[] methods = implClzz.getMethods();
+//                for (Method m : methods) {
+//                    if (m.getName().startsWith("set")) {
+//                        Class<?> paramType = m.getParameterTypes()[0];
+//                        if (paramType.getName().equals(viewModelClzz.getName())) {
+//                            m.invoke(viewDataBinding, viewModel);
+//                        }
+//                    }
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     private void createViewModel() {
         if (viewModel != null) {

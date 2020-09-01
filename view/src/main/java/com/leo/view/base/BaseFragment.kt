@@ -1,4 +1,4 @@
-package com.leo.myarchitecture.ui.base
+package com.leo.view.base
 
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment

@@ -1,4 +1,4 @@
-package com.leo.myarchitecture.ui.base
+package com.leo.view.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

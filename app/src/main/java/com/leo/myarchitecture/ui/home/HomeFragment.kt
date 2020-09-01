@@ -6,8 +6,8 @@ import androidx.databinding.ViewDataBinding
 import com.leo.myarchitecture.R
 import com.leo.myarchitecture.cpp.CppHttp
 import com.leo.myarchitecture.databinding.FragmentHomeBindingImpl
-import com.leo.myarchitecture.ui.base.BaseArchitectureFragment
-import com.leo.myarchitecture.ui.base.BaseViewModel
+import com.leo.view.base.BaseArchitectureFragment
+import com.leo.view.base.BaseViewModel
 import com.zhangyue.we.x2c.X2C
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_main.*

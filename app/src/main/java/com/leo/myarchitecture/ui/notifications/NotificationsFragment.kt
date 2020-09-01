@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.leo.manger.thread.ThreadManger
 import com.leo.myarchitecture.R
-import com.leo.myarchitecture.ui.base.BaseFragment
+import com.leo.view.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_notifications.*
 import java.lang.Thread.sleep
 import java.lang.ref.WeakReference

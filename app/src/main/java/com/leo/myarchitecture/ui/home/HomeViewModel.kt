@@ -3,7 +3,7 @@ package com.leo.myarchitecture.ui.home
 import android.app.Application
 import android.util.Log
 import com.leo.manger.aspectj.annotation.RecordClick
-import com.leo.myarchitecture.ui.base.BaseViewModel
+import com.leo.view.base.BaseViewModel
 
 class HomeViewModel(application: Application) : BaseViewModel(application) {
 
