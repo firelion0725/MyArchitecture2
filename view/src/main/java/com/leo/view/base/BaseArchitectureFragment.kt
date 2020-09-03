@@ -14,10 +14,10 @@ import androidx.databinding.ViewDataBinding
  * @describe
  */
 
-abstract class BaseArchitectureFragment : BaseFragment() {
+abstract class BaseArchitectureFragment<VM:BaseViewModel,VDB:ViewDataBinding> : BaseFragment() {
 
-    protected lateinit var binding: ViewDataBinding
-    protected lateinit var viewModel: BaseViewModel
+    protected lateinit var binding: VDB
+    protected lateinit var viewModel: VM
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +38,6 @@ abstract class BaseArchitectureFragment : BaseFragment() {
         super.onDestroy()
     }
 
-    abstract fun setViewModel(): BaseViewModel
-    abstract fun setBinding(): ViewDataBinding
+    abstract fun setViewModel(): VM
+    abstract fun setBinding(): VDB
 }
