@@ -1,6 +1,9 @@
 package com.leo.view.base
 
+import android.app.Activity
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +27,24 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     abstract fun getLayoutId(): Int
+
+    open fun adapterScreen(activity: Activity, targetDp: Int, isVertical: Boolean) {
+        val systemDm = Resources.getSystem().displayMetrics
+        val appDm = activity.application.resources.displayMetrics
+        val activityDm = activity.resources.displayMetrics
+
+        //通过目标DP 算出 逻辑密度
+        if (isVertical) {
+            activityDm.density = activityDm.heightPixels / targetDp.toFloat()
+        } else {
+            activityDm.density = activityDm.widthPixels / targetDp.toFloat()
+        }
+
+        //通过逻辑密度 算出比例密度
+        activityDm.scaledDensity = activityDm.density * (systemDm.scaledDensity / systemDm.density)
+        //算出 密度DPI 即修改没英寸的像素点数量
+        activityDm.densityDpi = (DisplayMetrics.DENSITY_DEFAULT * activityDm.density).toInt()
+    }
 
 
 

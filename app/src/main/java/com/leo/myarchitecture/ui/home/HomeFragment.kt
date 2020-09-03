@@ -31,9 +31,13 @@ class HomeFragment : BaseArchitectureFragment<HomeViewModel, FragmentHomeBinding
         val c = CppHttp()
         text.text = c.testString()
 
+//        val go = GoTo()
+
         viewModel.liveData.observe(this.viewLifecycleOwner, Observer {
             val intent = Intent(this.activity, Fun1ActivityMainActivity::class.java)
             startActivity(intent)
+
+//            ARouter.getInstance().build(FUN1_ACTIVITY).navigation()
         })
     }
 
