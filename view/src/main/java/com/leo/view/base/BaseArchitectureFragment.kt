@@ -25,7 +25,7 @@ abstract class BaseArchitectureFragment<VM:BaseViewModel,VDB:ViewDataBinding> : 
         savedInstanceState: Bundle?
     ): View? {
         viewModel = setViewModel()
-        binding = setBinding()
+        binding = setBinding(container)
         viewModel.apply {
             lifecycle.addObserver(this)
         }
@@ -39,5 +39,5 @@ abstract class BaseArchitectureFragment<VM:BaseViewModel,VDB:ViewDataBinding> : 
     }
 
     abstract fun setViewModel(): VM
-    abstract fun setBinding(): VDB
+    abstract fun setBinding(container: ViewGroup?): VDB
 }

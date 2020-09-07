@@ -1,6 +1,7 @@
 package com.leo.manger.thread;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -17,17 +18,16 @@ public class ThreadManger {
 
     static class IoThread {
         private static int aliveCore = Runtime.getRuntime().availableProcessors();
-
         static ThreadFactory ioNamedThreadFactory = new DefaultThreadFactory("my io thread");
         static ThreadFactory cpuNamedThreadFactory = new DefaultThreadFactory("my cpu thread");
 
         static final ExecutorService IO_EXECUTOR = new ThreadPoolExecutor(2 * aliveCore, 2 * aliveCore,
                 60L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>(true), ioNamedThreadFactory);
+                new LinkedBlockingDeque<Runnable>(), ioNamedThreadFactory);
 
         static final ExecutorService CPU_EXECUTOR = new ThreadPoolExecutor(aliveCore + 1, aliveCore + 1,
                 60L, TimeUnit.SECONDS,
-                new SynchronousQueue<Runnable>(true), cpuNamedThreadFactory);
+                new LinkedBlockingDeque<Runnable>(), cpuNamedThreadFactory);
     }
 
     public static ExecutorService getIoExecutor() {

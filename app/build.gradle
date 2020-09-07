@@ -68,9 +68,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     implementation 'com.github.smartzheng:asyncstarter:1.0.1'
-//    kapt 'com.alibaba:arouter-compiler:1.2.2'
 
     annotationProcessor 'com.zhangyue.we:x2c-apt:1.1.2'
-    implementation 'com.zhangyue.we:x2c-lib:1.0.6'
+//    implementation 'com.zhangyue.we:x2c-lib:1.0.6'
 
 }

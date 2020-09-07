@@ -22,7 +22,6 @@ class DashboardFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return inflater.inflate(R.layout.fragment_dashboard, container, false)
         return X2C.inflate(inflater.context,R.layout.fragment_dashboard,container,false)
     }
 

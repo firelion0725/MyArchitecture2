@@ -1,1 +1,5 @@
-<resources></resources>
+<resources>
+
+    <string name="fun1_title">aaa</string>
+    <string name="title">aaa</string>
+</resources>

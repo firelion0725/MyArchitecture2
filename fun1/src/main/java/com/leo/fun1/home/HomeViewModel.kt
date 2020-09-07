@@ -1,4 +1,4 @@
-package com.leo.myarchitecture.ui.home
+package com.leo.fun1.home
 
 import android.app.Application
 import androidx.lifecycle.LiveData
