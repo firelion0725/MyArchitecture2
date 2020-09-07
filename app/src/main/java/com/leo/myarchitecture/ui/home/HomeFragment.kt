@@ -4,11 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.alibaba.android.arouter.launcher.ARouter
 import com.leo.fun1.ui.Fun1ActivityMainActivity
 import com.leo.myarchitecture.R
 import com.leo.myarchitecture.cpp.CppHttp
 import com.leo.myarchitecture.databinding.FragmentHomeBindingImpl
 import com.leo.view.base.BaseArchitectureFragment
+import com.leo.view.comm.FUN1_ACTIVITY
 import com.zhangyue.we.x2c.X2C
 import com.zhangyue.we.x2c.ano.Xml
 import kotlinx.android.synthetic.main.activity_main.*
@@ -34,12 +36,10 @@ class HomeFragment : BaseArchitectureFragment<HomeViewModel, FragmentHomeBinding
 //        val go = GoTo()
 
         viewModel.liveData.observe(this.viewLifecycleOwner, Observer {
-            val intent = Intent(this.activity, Fun1ActivityMainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this.activity, Fun1ActivityMainActivity::class.java)
+//            startActivity(intent)
 
-//            ARouter.getInstance().build(FUN1_ACTIVITY).navigation()
+            ARouter.getInstance().build(FUN1_ACTIVITY).navigation()
         })
     }
-
-
 }
