@@ -5,6 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.leo.data.api.GankApiRepository
 import com.leo.data.model.BannerTitleModel
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -29,5 +33,22 @@ class DashboardViewModel() : ViewModel() {
                 println(e.message)
             }
         }
+    }
+
+    fun test2() {
+        GankApiRepository.getBanners()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<BannerTitleModel> {
+                override fun onSubscribe(d: Disposable) {
+                }
+
+                override fun onSuccess(t: BannerTitleModel) {
+                }
+
+                override fun onError(e: Throwable) {
+                }
+
+            })
     }
 }
